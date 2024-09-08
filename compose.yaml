@@ -1,0 +1,16 @@
+
+services:
+  adminer:
+    image: adminer
+    ports:
+      - 8090:8080 # Utilisation du bon port interne d'Adminer
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: customers
+      POSTGRES_USER: customers
+      POSTGRES_PASSWORD: customers
+    volumes:
+      - ./customers-data:/var/lib/postgresql/data  # Correction du chemin de volume
+    ports:
+      - "5433:5432"
